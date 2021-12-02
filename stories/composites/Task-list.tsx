@@ -1,9 +1,10 @@
 import React from 'react'
-import './task-list.css';
-
-import { TaskListItem } from './Task-list-item';
+import './task-list.css'
 
 import { DroppableProvided, Draggable } from 'react-beautiful-dnd'
+
+import { TaskListItem } from './Task-list-item'
+import { TaskListHeader } from '../atoms/Task-list-header'
 
 interface TaskListProps {
     provided: DroppableProvided
@@ -32,13 +33,16 @@ export const TaskList = ({
     })
 
     return (
-        <ul
-            className="taskList"
-            ref={provided.innerRef}
-            {...props}
-        >
-            {listItems}
-            {provided.placeholder}
-        </ul>
+        <section className="taskList--container">
+            <TaskListHeader headingText="Small" subHeadingText="Less than a day"/>
+            <ul
+                className="taskList"
+                ref={provided.innerRef}
+                {...props}
+            >
+                {listItems}
+                {provided.placeholder}
+            </ul>
+        </section>
     )
 }
