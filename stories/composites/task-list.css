@@ -30,6 +30,8 @@
     padding-right: var(--u20);
 
     margin-top: var(--u20);
+
+    width: 18rem;
 }
 
 .taskList li {

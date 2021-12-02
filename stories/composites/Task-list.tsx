@@ -10,11 +10,15 @@ import { TaskListHeader } from '../atoms/Task-list-header'
 interface TaskListProps {
     provided: DroppableProvided
     items: { id: string, text: string }[]
+    headingText: string
+    subHeadingText: string
 }
 
 export const TaskList = ({
     provided,
     items = [],
+    headingText,
+    subHeadingText,
     ...props
 }: TaskListProps) => {
     const listItems = items.map((item, index) => {
@@ -36,7 +40,7 @@ export const TaskList = ({
     return (
         <section className="taskList--container">
             <div className="taskList--headerContainer">
-                <TaskListHeader headingText="Small" subHeadingText="Less than a day"/>
+                <TaskListHeader headingText={headingText} subHeadingText={subHeadingText}/>
                 <div className="taskList--buttonContainer">
                     <Button label="+ Add task" underlined={true}/>
                 </div>

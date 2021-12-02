@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.innerContainer {
+    display: flex;
+    padding-top: var(--u20);
+    gap: var(--u20);
+}
