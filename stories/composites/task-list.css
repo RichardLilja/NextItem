@@ -1,0 +1,23 @@
+.taskList {
+    --taskList-gradient: linear-gradient(180deg, var(--color-darkGray-2) 0%, var(--color-transparent) 100%);
+
+    background: var(--taskList-gradient);
+
+    --taskList-borderColor: var(--color-transparent);
+    --taskList-borderRadius: var(--u10);
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--taskList-borderColor);
+    border-radius: var(--taskList-borderRadius);
+    border-bottom: none;
+
+    padding-top: var(--u20);
+    padding-bottom: var(--u20);
+    padding-left: var(--u20);
+    padding-right: var(--u20);
+}
+
+.taskList li {
+    list-style: none;
+}

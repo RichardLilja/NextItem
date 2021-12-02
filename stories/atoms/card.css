@@ -1,0 +1,15 @@
+.card {
+    --card-borderColor: var(--color-darkGray-4);
+    --card-borderRadius: var(--u10);
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--card-borderColor);
+    border-radius: var(--card-borderRadius);
+
+    --card-backgroundColor: var(--color-darkGray-2);
+    --card-labelColor: var(--color-lightGray-1);
+
+    background-color: var(--card-backgroundColor);
+    color: var(--card-labelColor);
+}

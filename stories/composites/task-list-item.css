@@ -1,0 +1,25 @@
+.taskListItem {
+    list-style: none;
+    margin-bottom: var(--u20);
+}
+
+.taskListItem--textContainer {
+    font-weight: lighter;
+    font-size: var(--u14);
+    line-height: 1.6;
+
+    padding-top: var(--u15);
+    padding-bottom: var(--u20);
+    padding-left: var(--u20);
+    padding-right: var(--u20);
+}
+
+.taskListItem--buttonContainer {
+    display: flex;
+    justify-content: end;
+
+    padding-top: var(--u20);
+    padding-bottom: var(--u20);
+    padding-left: var(--u20);
+    padding-right: var(--u20);
+}
