@@ -3,6 +3,7 @@ import './task-list.css'
 
 import { DroppableProvided, Draggable } from 'react-beautiful-dnd'
 
+import { Button } from '../atoms/Button'
 import { TaskListItem } from './Task-list-item'
 import { TaskListHeader } from '../atoms/Task-list-header'
 
@@ -34,7 +35,12 @@ export const TaskList = ({
 
     return (
         <section className="taskList--container">
-            <TaskListHeader headingText="Small" subHeadingText="Less than a day"/>
+            <div className="taskList--headerContainer">
+                <TaskListHeader headingText="Small" subHeadingText="Less than a day"/>
+                <div className="taskList--buttonContainer">
+                    <Button label="+ Add task" underlined={true}/>
+                </div>
+            </div>
             <ul
                 className="taskList"
                 ref={provided.innerRef}

@@ -1,3 +1,15 @@
+.taskList--headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-left: var(--u20);
+}
+
+.taskList--buttonContainer button {
+    position: relative;
+    top: var(--u10);
+}
+
 .taskList {
     --taskList-gradient: linear-gradient(180deg, var(--color-darkGray-2) 0%, var(--color-transparent) 100%);
 
