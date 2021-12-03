@@ -34,7 +34,9 @@ const Template: ComponentStory<typeof TaskList> = args => {
         <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId="taskList">
                 {provided => (
-                    <TaskList {...args} provided={provided} items={data} />
+                    <>
+                    <TaskList {...args} provided={provided} items={data} headingText="small" subHeadingText="1 - 2 days"/>
+                    </>
                 )}
             </Droppable>
         </DragDropContext>

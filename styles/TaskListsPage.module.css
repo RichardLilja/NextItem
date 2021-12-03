@@ -7,4 +7,5 @@
     display: flex;
     padding-top: var(--u20);
     gap: var(--u20);
+    max-width: 80vw;
 }

@@ -38,7 +38,7 @@ export const TaskList = ({
     })
 
     return (
-        <section>
+        <section className={styles.taskListContainer}>
             <div className={styles.headerContainer}>
                 <TaskListHeader
                     headingText={headingText}

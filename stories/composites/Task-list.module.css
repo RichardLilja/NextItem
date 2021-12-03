@@ -10,7 +10,13 @@
     top: var(--u10);
 }
 
+.taskListContainer {
+    flex: 1 1 0;
+    min-width: 16rem;
+}
+
 .taskList {
+
     --taskList-gradient: linear-gradient(
         180deg,
         var(--color-darkGray-2) 0%,
@@ -34,8 +40,6 @@
     padding-right: var(--u20);
 
     margin-top: var(--u20);
-
-    width: 18rem;
 }
 
 .taskList li {
