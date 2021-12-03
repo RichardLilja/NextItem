@@ -33,40 +33,37 @@
     background-color: var(--button-backgroundColor);
     color: var(--button-labelColor);
 
-    margin: 0;
-
     transition: all 600ms var(--bezier-snappyEaseOut);
 }
-
 .button:hover {
     --button-borderColor: var(--color-darkGray-4);
     --button-backgroundColor: var(--color-darkGray-4);
 }
 
-.button.button--outlined {
+.outlined {
     --button-borderColor: var(--color-darkGray-4);
     --button-backgroundColor: var(--color-transparent);
 }
-.button.button--outlined:hover {
+.outlined:hover {
     --button-borderColor: var(--color-darkGray-4);
     --button-backgroundColor: var(--color-darkGray-4);    
 }
 
-.button.button--underlined {
+.underlined {
     --button-textDecoration: underline;
 }
 
-.button.button--fullWidth {
+.fullWidth {
     --button-width: 100%;
 }
 
-.button.button--smallSize {
+.smallSize {
     --button-fontSize: var(--u10);
     --button-horizontalPadding: var(--u10);
     --button-verticalPadding: var(--u4);
     padding-bottom: var(--u5);
 }
-.button.button--largeSize {
+.largeSize {
     --button-horizontalPadding: var(--u24);
     --button-verticalPadding: var(--u14);
 }

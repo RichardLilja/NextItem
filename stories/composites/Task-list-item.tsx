@@ -1,5 +1,5 @@
 import React from 'react'
-import './task-list-item.css';
+import styles from './Task-list-item.module.css'
 
 import { DraggableProvided } from 'react-beautiful-dnd'
 
@@ -18,16 +18,16 @@ export const TaskListItem = ({
 }: TaskListItemProps) => {
     return (
         <li
-            className="taskListItem"
+            className={styles.taskListItem}
             ref={provided.innerRef}
             {...props}
         >
             <Card>
                 <>
-                    <div className="taskListItem--textContainer">
+                    <div className={styles.textContainer}>
                         {text}
                     </div>
-                    <div className="taskListItem--buttonContainer">
+                    <div className={styles.buttonContainer}>
                         <Button label="Mark as done" size="small" type="outlined"/>
                     </div>
                 </>

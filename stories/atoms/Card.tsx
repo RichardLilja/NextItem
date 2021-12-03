@@ -1,5 +1,5 @@
 import React from 'react'
-import './card.css'
+import styles from './Card.module.css'
 
 interface CardProps {
     children?: JSX.Element
@@ -12,7 +12,7 @@ export const Card = ({
 
     return (
         <div
-            className={`card`}
+            className={styles.card}
             {...props}
         >   
             {children}

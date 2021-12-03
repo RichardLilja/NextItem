@@ -1,5 +1,5 @@
-import React from "react"
-import './task-list-header.css'
+import React from 'react'
+import styles from './Task-list-header.module.css'
 
 interface TaskListHeaderProps {
     headingText: string
@@ -12,9 +12,9 @@ export const TaskListHeader = ({
     ...props
 }: TaskListHeaderProps) => {
     return (
-        <header className="taskListHeader">
-            <h2 className="taskListHeader--heading">{headingText}</h2>
-            <p className="taskListheader--subHeading">{subHeadingText}</p>
+        <header className={styles.taskListHeader}>
+            <h2 className={styles.heading}>{headingText}</h2>
+            <p className={styles.subHeading}>{subHeadingText}</p>
         </header>
     )
 }

@@ -1,11 +1,11 @@
-.taskList--headerContainer {
+.headerContainer {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     padding-left: var(--u20);
 }
 
-.taskList--buttonContainer button {
+.buttonContainer button {
     position: relative;
     top: var(--u10);
 }

@@ -10,18 +10,9 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
-export const Solid = Template.bind({})
-Solid.args = {
+export const button = Template.bind({})
+button.args = {
     type: 'solid',
-    width: 'auto',
-    size: 'medium',
-    label: 'button',
-    underlined: false,
-}
-
-export const Outlined = Template.bind({})
-Outlined.args = {
-    type: 'outlined',
     width: 'auto',
     size: 'medium',
     label: 'button',

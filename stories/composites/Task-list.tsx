@@ -1,5 +1,5 @@
 import React from 'react'
-import './task-list.css'
+import styles from './Task-list.module.css'
 
 import { DroppableProvided, Draggable } from 'react-beautiful-dnd'
 
@@ -38,15 +38,15 @@ export const TaskList = ({
     })
 
     return (
-        <section className="taskList--container">
-            <div className="taskList--headerContainer">
+        <section>
+            <div className={styles.headerContainer}>
                 <TaskListHeader headingText={headingText} subHeadingText={subHeadingText}/>
-                <div className="taskList--buttonContainer">
+                <div className={styles.buttonContainer}>
                     <Button label="+ Add task" underlined={true}/>
                 </div>
             </div>
             <ul
-                className="taskList"
+                className={styles.taskList}
                 ref={provided.innerRef}
                 {...props}
             >

@@ -3,7 +3,7 @@
     margin-bottom: var(--u20);
 }
 
-.taskListItem--textContainer {
+.textContainer {
     font-weight: lighter;
     font-size: var(--u14);
     line-height: 1.6;
@@ -14,7 +14,7 @@
     padding-right: var(--u20);
 }
 
-.taskListItem--buttonContainer {
+.buttonContainer {
     display: flex;
     justify-content: end;
 

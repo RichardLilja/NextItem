@@ -4,13 +4,13 @@
     color: var(--taskListHeader-textColor);
 }
 
-.taskListHeader--heading {
+.heading {
     font-size: var(--u24);
     font-weight: bold;
     line-height: 1;
 }
 
-.taskListheader--subHeading {
+.subHeading {
     font-size: var(--u14);
     font-weight: lighter;
     line-height: 1;

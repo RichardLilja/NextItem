@@ -1,5 +1,5 @@
 import React from 'react'
-import './button.css'
+import styles from './Button.module.css'
 
 interface ButtonProps {
     type?: 'solid' | 'outlined'
@@ -18,18 +18,18 @@ export const Button = ({
     underlined = false,
     ...props
 }: ButtonProps) => {
-    const btnWidth = width === 'auto' ? '' : 'button--fullWidth'
-    const btnType = type === 'solid' ? '' : 'button--outlined'
-    const btnUnderlined = underlined === true ? 'button--underlined' : ''
 
-    let btnSize = ''
-    btnSize = size === 'small' ? 'button--smallSize' : btnSize
-    btnSize = size === 'large' ? 'button--largeSize' : btnSize
+    const stylesArray = [styles.button]
+    width === 'full' ? stylesArray.push(styles.fullWidth) : ''
+    type === 'outlined' ? stylesArray.push(styles.outlined) : ''
+    underlined === true ? stylesArray.push(styles.underlined) : ''
+    size === 'small' ? stylesArray.push(styles.smallSize) : ''
+    size === 'large' ? stylesArray.push(styles.largeSize) : ''
 
     return (
         <button
             type="button"
-            className={`button ${btnType} ${btnWidth} ${btnSize} ${btnUnderlined}`}
+            className={stylesArray.join(' ')}
             {...props}
         >
             {label}
