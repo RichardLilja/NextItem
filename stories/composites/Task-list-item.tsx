@@ -17,18 +17,16 @@ export const TaskListItem = ({
     ...props
 }: TaskListItemProps) => {
     return (
-        <li
-            className={styles.taskListItem}
-            ref={provided.innerRef}
-            {...props}
-        >
+        <li className={styles.taskListItem} ref={provided.innerRef} {...props}>
             <Card>
                 <>
-                    <div className={styles.textContainer}>
-                        {text}
-                    </div>
+                    <div className={styles.textContainer}>{text}</div>
                     <div className={styles.buttonContainer}>
-                        <Button label="Mark as done" size="small" type="outlined"/>
+                        <Button
+                            label="Mark as done"
+                            size="small"
+                            type="outlined"
+                        />
                     </div>
                 </>
             </Card>

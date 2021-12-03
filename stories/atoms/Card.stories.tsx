@@ -1,5 +1,5 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Card } from './Card'
 
@@ -8,11 +8,10 @@ export default {
     component: Card,
 } as ComponentMeta<typeof Card>
 
-const Template: ComponentStory<typeof Card> = (args) => {
+const Template: ComponentStory<typeof Card> = args => {
     return (
         <Card {...args}>
-            <div style={{minHeight: '10rem'}}>
-            </div>
+            <div style={{ minHeight: '10rem' }}></div>
         </Card>
     )
 }

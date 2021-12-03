@@ -18,7 +18,6 @@ export const Button = ({
     underlined = false,
     ...props
 }: ButtonProps) => {
-
     const stylesArray = [styles.button]
     width === 'full' ? stylesArray.push(styles.fullWidth) : ''
     type === 'outlined' ? stylesArray.push(styles.outlined) : ''
@@ -27,11 +26,7 @@ export const Button = ({
     size === 'large' ? stylesArray.push(styles.largeSize) : ''
 
     return (
-        <button
-            type="button"
-            className={stylesArray.join(' ')}
-            {...props}
-        >
+        <button type="button" className={stylesArray.join(' ')} {...props}>
             {label}
         </button>
     )

@@ -46,7 +46,7 @@
 }
 .outlined:hover {
     --button-borderColor: var(--color-darkGray-4);
-    --button-backgroundColor: var(--color-darkGray-4);    
+    --button-backgroundColor: var(--color-darkGray-4);
 }
 
 .underlined {

@@ -7,49 +7,48 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { TaskList } from '../stories/composites/Task-list'
 
 const TaskListsPage: NextPage = () => {
-
     let data = [
         [
             {
                 id: '157324095',
-                text: 'Här står det en enkelt beskrivning av vad som behöver göras.'
+                text: 'Här står det en enkelt beskrivning av vad som behöver göras.',
             },
             {
                 id: '147829304',
-                text: 'I framtiden kan dessa kort uppdateras med meta-info.'
-            }
+                text: 'I framtiden kan dessa kort uppdateras med meta-info.',
+            },
         ],
         [
             {
                 id: '257324095',
-                text: 'Här står det en enkelt beskrivning av vad som behöver göras.'
+                text: 'Här står det en enkelt beskrivning av vad som behöver göras.',
             },
             {
                 id: '247829304',
-                text: 'I framtiden kan dessa kort uppdateras med meta-info.'
-            }
+                text: 'I framtiden kan dessa kort uppdateras med meta-info.',
+            },
         ],
         [
             {
                 id: '357324095',
-                text: 'Här står det en enkelt beskrivning av vad som behöver göras.'
+                text: 'Här står det en enkelt beskrivning av vad som behöver göras.',
             },
             {
                 id: '347829304',
-                text: 'I framtiden kan dessa kort uppdateras med meta-info.'
-            }
+                text: 'I framtiden kan dessa kort uppdateras med meta-info.',
+            },
         ],
         [
             {
                 id: '457324095',
-                text: 'Här står det en enkelt beskrivning av vad som behöver göras.'
+                text: 'Här står det en enkelt beskrivning av vad som behöver göras.',
             },
             {
                 id: '447829304',
-                text: 'I framtiden kan dessa kort uppdateras med meta-info.'
-            }
+                text: 'I framtiden kan dessa kort uppdateras med meta-info.',
+            },
         ],
-    ];
+    ]
 
     const handleOnDragEnd = (result: any) => {
         console.log(result)
@@ -67,27 +66,24 @@ const TaskListsPage: NextPage = () => {
 
             data[sourceDroppableId] = sourceItems
             data[destinationDroppableId] = destinationItems
-
         } else {
             const sourceDroppableId = result.source.droppableId
             const items = Array.from(data[sourceDroppableId])
             const [reorderedItem] = items.splice(result.source.index, 1)
 
-            items.splice(result.destination.index, 0, reorderedItem)  
-            data[sourceDroppableId] = items   
+            items.splice(result.destination.index, 0, reorderedItem)
+            data[sourceDroppableId] = items
         }
     }
 
     return (
         <section className={styles.container}>
             <div className={styles.innerContainer}>
-
                 <DragDropContext onDragEnd={handleOnDragEnd}>
-
                     <Droppable droppableId="0">
-                        {(provided) => (
-                            <TaskList 
-                                provided={provided} 
+                        {provided => (
+                            <TaskList
+                                provided={provided}
                                 items={data[0]}
                                 headingText="Small"
                                 subHeadingText="Less than a day"
@@ -96,9 +92,9 @@ const TaskListsPage: NextPage = () => {
                     </Droppable>
 
                     <Droppable droppableId="1">
-                        {(provided) => (
-                            <TaskList 
-                                provided={provided} 
+                        {provided => (
+                            <TaskList
+                                provided={provided}
                                 items={data[1]}
                                 headingText="Medium"
                                 subHeadingText="1 - 2 days"
@@ -107,9 +103,9 @@ const TaskListsPage: NextPage = () => {
                     </Droppable>
 
                     <Droppable droppableId="2">
-                        {(provided) => (
-                            <TaskList 
-                                provided={provided} 
+                        {provided => (
+                            <TaskList
+                                provided={provided}
                                 items={data[2]}
                                 headingText="Large"
                                 subHeadingText="3 - 5 days"
@@ -118,18 +114,16 @@ const TaskListsPage: NextPage = () => {
                     </Droppable>
 
                     <Droppable droppableId="3">
-                        {(provided) => (
-                            <TaskList 
-                                provided={provided} 
+                        {provided => (
+                            <TaskList
+                                provided={provided}
                                 items={data[3]}
                                 headingText="Large"
                                 subHeadingText="More than 5 days"
                             />
                         )}
                     </Droppable>
-
                 </DragDropContext>
-
             </div>
         </section>
     )

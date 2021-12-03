@@ -9,7 +9,7 @@ import { TaskListHeader } from '../atoms/Task-list-header'
 
 interface TaskListProps {
     provided: DroppableProvided
-    items: { id: string, text: string }[]
+    items: { id: string; text: string }[]
     headingText: string
     subHeadingText: string
 }
@@ -24,7 +24,7 @@ export const TaskList = ({
     const listItems = items.map((item, index) => {
         return (
             <Draggable key={item.id} draggableId={item.id} index={index}>
-                {(provided) => (
+                {provided => (
                     <TaskListItem
                         key={item.id}
                         text={item.text}
@@ -40,16 +40,15 @@ export const TaskList = ({
     return (
         <section>
             <div className={styles.headerContainer}>
-                <TaskListHeader headingText={headingText} subHeadingText={subHeadingText}/>
+                <TaskListHeader
+                    headingText={headingText}
+                    subHeadingText={subHeadingText}
+                />
                 <div className={styles.buttonContainer}>
-                    <Button label="+ Add task" underlined={true}/>
+                    <Button label="+ Add task" underlined={true} />
                 </div>
             </div>
-            <ul
-                className={styles.taskList}
-                ref={provided.innerRef}
-                {...props}
-            >
+            <ul className={styles.taskList} ref={provided.innerRef} {...props}>
                 {listItems}
                 {provided.placeholder}
             </ul>

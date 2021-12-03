@@ -11,7 +11,11 @@
 }
 
 .taskList {
-    --taskList-gradient: linear-gradient(180deg, var(--color-darkGray-2) 0%, var(--color-transparent) 100%);
+    --taskList-gradient: linear-gradient(
+        180deg,
+        var(--color-darkGray-2) 0%,
+        var(--color-transparent) 100%
+    );
 
     background: var(--taskList-gradient);
 

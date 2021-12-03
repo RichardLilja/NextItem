@@ -1,5 +1,5 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
@@ -10,16 +10,21 @@ export default {
     component: TaskListItem,
 } as ComponentMeta<typeof TaskListItem>
 
-const Template: ComponentStory<typeof TaskListItem> = (args) => {
-    const text = 'Här står det en enkelt beskrivning av vad som behöver göras. I framtiden kan dessa kort uppdateras med meta-info.'
+const Template: ComponentStory<typeof TaskListItem> = args => {
+    const text =
+        'Här står det en enkelt beskrivning av vad som behöver göras. I framtiden kan dessa kort uppdateras med meta-info.'
 
     return (
         <DragDropContext onDragEnd={() => {}}>
             <Droppable droppableId="taskList">
-                {(provided) => (
+                {provided => (
                     <div ref={provided.innerRef}>
-                        <Draggable key="item.id" draggableId="item.id" index={0}>
-                            {(provided) => (
+                        <Draggable
+                            key="item.id"
+                            draggableId="item.id"
+                            index={0}
+                        >
+                            {provided => (
                                 <TaskListItem
                                     key="item.id"
                                     text={text}
