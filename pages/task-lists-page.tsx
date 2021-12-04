@@ -1,12 +1,20 @@
 import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import styles from '../styles/TaskListsPage.module.css'
 
+import { useState, useEffect } from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
-import { TaskList } from '../stories/composites/Task-list'
+import { PageFooter } from '../stories/composites/Page-footer'
+const TaskList = dynamic(() => import('../stories/composites/Task-list'))
 
 const TaskListsPage: NextPage = () => {
+    const [winReady, setwinReady] = useState(false)
+    useEffect(() => {
+        setwinReady(true)
+    }, [])
+
     let data = [
         [
             {
@@ -51,8 +59,6 @@ const TaskListsPage: NextPage = () => {
     ]
 
     const handleOnDragEnd = (result: any) => {
-        console.log(result)
-
         if (!result.destination) return
 
         if (result.source.droppableId !== result.destination.droppableId) {
@@ -76,10 +82,10 @@ const TaskListsPage: NextPage = () => {
         }
     }
 
-    return (
-        <section className={styles.container}>
-            <div className={styles.innerContainer}>
-                <DragDropContext onDragEnd={handleOnDragEnd}>
+    function lists() {
+        if (winReady) {
+            return (
+                <>
                     <Droppable droppableId="0">
                         {provided => (
                             <TaskList
@@ -123,9 +129,22 @@ const TaskListsPage: NextPage = () => {
                             />
                         )}
                     </Droppable>
-                </DragDropContext>
-            </div>
-        </section>
+                </>
+            )
+        }
+    }
+
+    return (
+        <div className={styles.pageWrapper}>
+            <section className={styles.container}>
+                <div className={styles.innerContainer}>
+                    <DragDropContext onDragEnd={handleOnDragEnd}>
+                        {lists()}
+                    </DragDropContext>
+                </div>
+            </section>
+            <PageFooter />
+        </div>
     )
 }
 

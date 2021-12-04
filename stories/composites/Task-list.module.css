@@ -11,12 +11,22 @@
 }
 
 .taskListContainer {
-    flex: 1 1 0;
     min-width: 16rem;
+    flex: 1 1 0;
 }
 
 .taskList {
+    padding-top: var(--u20);
+    padding-bottom: var(--u20);
+    padding-left: var(--u20);
+    padding-right: var(--u20);
+}
 
+.taskList li {
+    list-style: none;
+}
+
+.scrollable {
     --taskList-gradient: linear-gradient(
         180deg,
         var(--color-darkGray-2) 0%,
@@ -34,14 +44,23 @@
     border-radius: var(--taskList-borderRadius);
     border-bottom: none;
 
-    padding-top: var(--u20);
-    padding-bottom: var(--u20);
-    padding-left: var(--u20);
-    padding-right: var(--u20);
-
     margin-top: var(--u20);
+    height: calc(80vh - 200px);
+    overflow-y: auto;
 }
 
-.taskList li {
-    list-style: none;
+.taskListContainer::after {
+    --gradient: linear-gradient(
+        180deg,
+        var(--color-transparent) 0%,
+        var(--color-darkGray-1) 50%
+    );
+
+    background: var(--gradient);
+
+    display: block;
+    content: ' ';
+    height: 20px;
+    top: -20px;
+    position: relative;
 }

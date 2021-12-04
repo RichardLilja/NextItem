@@ -28,9 +28,8 @@ export const TaskList = ({
                     <TaskListItem
                         key={item.id}
                         text={item.text}
+                        innerRef={provided.innerRef}
                         provided={provided}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
                     />
                 )}
             </Draggable>
@@ -48,10 +47,18 @@ export const TaskList = ({
                     <Button label="+ Add task" underlined={true} />
                 </div>
             </div>
-            <ul className={styles.taskList} ref={provided.innerRef} {...props}>
-                {listItems}
-                {provided.placeholder}
-            </ul>
+            <div className={styles.scrollable}>
+                <ul
+                    className={styles.taskList}
+                    ref={provided.innerRef}
+                    {...props}
+                >
+                    {listItems}
+                    {provided.placeholder}
+                </ul>
+            </div>
         </section>
     )
 }
+
+export default TaskList

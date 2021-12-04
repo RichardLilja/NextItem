@@ -9,6 +9,7 @@
     --u15: calc(var(--u) * 15);
     --u20: calc(var(--u) * 20);
     --u24: calc(var(--u) * 24);
+    --u40: calc(var(--u) * 40);
 
     --font-sansSerif: 'Open Sans', sans-serif;
 

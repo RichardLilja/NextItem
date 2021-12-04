@@ -8,16 +8,24 @@ import { Button } from '../atoms/Button'
 
 interface TaskListItemProps {
     text?: string
+    innerRef: DraggableProvided['innerRef']
     provided: DraggableProvided
 }
 
 export const TaskListItem = ({
     text,
+    innerRef,
     provided,
     ...props
 }: TaskListItemProps) => {
     return (
-        <li className={styles.taskListItem} ref={provided.innerRef} {...props}>
+        <li
+            className={styles.taskListItem}
+            ref={innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            {...props}
+        >
             <Card>
                 <>
                     <div className={styles.textContainer}>{text}</div>

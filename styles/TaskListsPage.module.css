@@ -1,11 +1,16 @@
 .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: calc(100vh - 200px);
 }
 
 .innerContainer {
     display: flex;
-    padding-top: var(--u20);
     gap: var(--u20);
     max-width: 80vw;
+}
+
+.pageWrapper {
+    background: var(--color-darkGray-1);
 }
