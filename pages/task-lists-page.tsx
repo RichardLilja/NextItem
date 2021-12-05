@@ -6,124 +6,121 @@ import styles from '../styles/TaskListsPage.module.css'
 import { useState, useEffect } from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
+import { useQuery } from 'react-query';
+import axios from 'axios'
+
 import { PageFooter } from '../stories/composites/Page-footer'
 const TaskList = dynamic(() => import('../stories/composites/Task-list'))
 
+export interface ITasks {
+    [key : string]: Array<{ id: string, text: string}>
+}
+
 const TaskListsPage: NextPage = () => {
+
     const [winReady, setwinReady] = useState(false)
+    const [tasks, setTasks] = useState<ITasks | null>(null)
+
     useEffect(() => {
         setwinReady(true)
     }, [])
 
-    let data = [
-        [
-            {
-                id: '157324095',
-                text: 'Här står det en enkelt beskrivning av vad som behöver göras.',
-            },
-            {
-                id: '147829304',
-                text: 'I framtiden kan dessa kort uppdateras med meta-info.',
-            },
-        ],
-        [
-            {
-                id: '257324095',
-                text: 'Här står det en enkelt beskrivning av vad som behöver göras.',
-            },
-            {
-                id: '247829304',
-                text: 'I framtiden kan dessa kort uppdateras med meta-info.',
-            },
-        ],
-        [
-            {
-                id: '357324095',
-                text: 'Här står det en enkelt beskrivning av vad som behöver göras.',
-            },
-            {
-                id: '347829304',
-                text: 'I framtiden kan dessa kort uppdateras med meta-info.',
-            },
-        ],
-        [
-            {
-                id: '457324095',
-                text: 'Här står det en enkelt beskrivning av vad som behöver göras.',
-            },
-            {
-                id: '447829304',
-                text: 'I framtiden kan dessa kort uppdateras med meta-info.',
-            },
-        ],
-    ]
+    useQuery('tasks', async () => {
+        const { data } = await axios.get('http://localhost:3033/tasks')
+        setTasks(data.tasks)
+    })
 
     const handleOnDragEnd = (result: any) => {
         if (!result.destination) return
+        if (tasks === null) return
 
-        if (result.source.droppableId !== result.destination.droppableId) {
-            const sourceDroppableId = result.source.droppableId
-            const sourceItems = Array.from(data[sourceDroppableId])
-            const [reorderedItem] = sourceItems.splice(result.source.index, 1)
+        const srcDroppableId = String(result.source.droppableId)
+        const destDroppableId = String(result.destination.droppableId)
+        const isSameList = srcDroppableId === destDroppableId ? true : false
 
-            const destinationDroppableId = result.destination.droppableId
-            const destinationItems = data[destinationDroppableId]
-            destinationItems.splice(result.destination.index, 0, reorderedItem)
+        const resSrcIndex = result.source.index
+        const resDestIndex = result.destination.index
 
-            data[sourceDroppableId] = sourceItems
-            data[destinationDroppableId] = destinationItems
+        const srcItems = Array.from(tasks[srcDroppableId])
+        const [reorderedItem] = srcItems.splice(resSrcIndex, 1)
+        const newTaskObject = Object.assign({}, tasks)
+
+        if (isSameList && tasks != null) {
+            srcItems.splice(resDestIndex, 0, reorderedItem)
+            newTaskObject[srcDroppableId] = srcItems
+
         } else {
-            const sourceDroppableId = result.source.droppableId
-            const items = Array.from(data[sourceDroppableId])
-            const [reorderedItem] = items.splice(result.source.index, 1)
-
-            items.splice(result.destination.index, 0, reorderedItem)
-            data[sourceDroppableId] = items
+            const destItems = Array.from(tasks[destDroppableId])
+            destItems.splice(resDestIndex, 0, reorderedItem)
+            newTaskObject[srcDroppableId] = srcItems
+            newTaskObject[destDroppableId] = destItems
         }
+
+        setTasks(newTaskObject)
+
+        // if (result.source.droppableId !== result.destination.droppableId) {
+        //     const sourceDroppableId = result.source.droppableId
+        //     const sourceItems = Array.from(data[sourceDroppableId])
+        //     const [reorderedItem] = sourceItems.splice(result.source.index, 1)
+
+        //     const destinationDroppableId = result.destination.droppableId
+        //     const destinationItems = data[destinationDroppableId]
+        //     destinationItems.splice(result.destination.index, 0, reorderedItem)
+
+        //     data[sourceDroppableId] = sourceItems
+        //     data[destinationDroppableId] = destinationItems
+        // } else {
+        //     const sourceDroppableId = result.source.droppableId
+        //     const items = Array.from(data[sourceDroppableId])
+        //     const [reorderedItem] = items.splice(result.source.index, 1)
+
+        //     items.splice(result.destination.index, 0, reorderedItem)
+        //     data[sourceDroppableId] = items
+        // }
     }
 
     function lists() {
-        if (winReady) {
+        if (winReady && tasks !== null) {
             return (
                 <>
-                    <Droppable droppableId="0">
+                    <Droppable droppableId="small">
                         {provided => (
                             <TaskList
                                 provided={provided}
-                                items={data[0]}
+                                items={tasks.small}
                                 headingText="Small"
                                 subHeadingText="Less than a day"
                             />
                         )}
                     </Droppable>
 
-                    <Droppable droppableId="1">
+                    <Droppable droppableId="medium">
                         {provided => (
                             <TaskList
                                 provided={provided}
-                                items={data[1]}
+                                items={tasks.medium}
                                 headingText="Medium"
                                 subHeadingText="1 - 2 days"
                             />
                         )}
                     </Droppable>
 
-                    <Droppable droppableId="2">
+                    <Droppable droppableId="large">
                         {provided => (
                             <TaskList
                                 provided={provided}
-                                items={data[2]}
+                                items={tasks.large}
                                 headingText="Large"
                                 subHeadingText="3 - 5 days"
                             />
                         )}
                     </Droppable>
 
-                    <Droppable droppableId="3">
+                    <Droppable droppableId="extraLarge">
                         {provided => (
                             <TaskList
                                 provided={provided}
-                                items={data[3]}
+                                items={tasks.extraLarge}
                                 headingText="Large"
                                 subHeadingText="More than 5 days"
                             />

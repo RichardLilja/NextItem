@@ -7,13 +7,16 @@
         "start": "next start",
         "lint": "next lint",
         "storybook": "start-storybook -p 6006 -s ./public",
-        "build-storybook": "build-storybook -s public"
+        "build-storybook": "build-storybook -s public",
+        "mds": "nodemon ./mockdataserver/server.mjs"
     },
     "dependencies": {
+        "axios": "^0.24.0",
         "next": "12.0.4",
         "react": "17.0.2",
         "react-beautiful-dnd": "^13.1.0",
         "react-dom": "17.0.2",
+        "react-query": "^3.34.0",
         "sanitize.css": "^13.0.0"
     },
     "devDependencies": {
@@ -28,10 +31,12 @@
         "@types/react": "17.0.37",
         "@types/react-beautiful-dnd": "^13.1.2",
         "babel-loader": "^8.2.3",
+        "cors": "^2.8.5",
         "eslint": "<8.0.0",
         "eslint-config-next": "12.0.4",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-storybook": "^0.5.1",
+        "express": "^4.17.1",
         "prettier": "^2.5.0",
         "storybook-css-modules-preset": "^1.1.1",
         "typescript": "4.5.2",
