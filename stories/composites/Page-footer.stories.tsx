@@ -8,7 +8,7 @@ export default {
     component: PageFooter,
 } as ComponentMeta<typeof PageFooter>
 
-const Template: ComponentStory<typeof PageFooter> = args => {
-    return <PageFooter {...args} />
+const Template: ComponentStory<typeof PageFooter> = () => {
+    return <PageFooter />
 }
 export const pageFooter = Template.bind({})

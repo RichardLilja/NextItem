@@ -1,11 +1,9 @@
 import React from 'react'
 import styles from './Page-footer.module.css'
 
-interface PageFooterProps {}
-
-export const PageFooter = ({ ...props }: PageFooterProps) => {
+export const PageFooter = () => {
     return (
-        <footer className={styles.pageFooter} {...props}>
+        <footer className={styles.pageFooter}>
             <img src="./next-item-logo.svg" alt="" />
         </footer>
     )

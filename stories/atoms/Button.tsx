@@ -2,31 +2,33 @@ import React from 'react'
 import styles from './Button.module.css'
 
 interface ButtonProps {
-    type?: 'solid' | 'outlined'
-    width?: 'auto' | 'full'
+    outlined?: boolean
+    underlined?: boolean
+    fullWidth?: boolean
     size?: 'small' | 'medium' | 'large'
     label?: string
-    underlined?: boolean
     onClick?: () => void
 }
 
 export const Button = ({
-    type = 'solid',
-    width = 'auto',
+    outlined = false,
+    underlined = false,
+    fullWidth = false,
     size = 'medium',
     label,
-    underlined = false,
-    ...props
+    ...props 
 }: ButtonProps) => {
-    const stylesArray = [styles.button]
-    width === 'full' ? stylesArray.push(styles.fullWidth) : ''
-    type === 'outlined' ? stylesArray.push(styles.outlined) : ''
-    underlined === true ? stylesArray.push(styles.underlined) : ''
-    size === 'small' ? stylesArray.push(styles.smallSize) : ''
-    size === 'large' ? stylesArray.push(styles.largeSize) : ''
+    const buttonStyles = [styles.button]
+
+    outlined === true ? buttonStyles.push(styles.outlined) : ''
+    underlined === true ? buttonStyles.push(styles.underlined) : ''
+    fullWidth === true ? buttonStyles.push(styles.fullWidth) : ''
+
+    size === 'small' ? buttonStyles.push(styles.smallSize) : ''
+    size === 'large' ? buttonStyles.push(styles.largeSize) : ''
 
     return (
-        <button type="button" className={stylesArray.join(' ')} {...props}>
+        <button type="button" className={buttonStyles.join(' ')} {...props}>
             {label}
         </button>
     )

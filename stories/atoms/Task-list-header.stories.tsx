@@ -8,12 +8,11 @@ export default {
     component: TaskListHeader,
 } as ComponentMeta<typeof TaskListHeader>
 
-const Template: ComponentStory<typeof TaskListHeader> = args => {
+const Template: ComponentStory<typeof TaskListHeader> = () => {
     return (
         <TaskListHeader
-            {...args}
-            headingText="Small"
-            subHeadingText="Less than a day"
+            heading="Small"
+            subheading="Less than a day"
         />
     )
 }

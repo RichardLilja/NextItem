@@ -1,66 +1,45 @@
-.headerContainer {
+.scrollableView {
+    --taskList-gradient: linear-gradient(
+        180deg,
+        var(--color-darkGray-2) 0%,
+        var(--color-transparent) 75%
+    );
+
+    background: var(--taskList-gradient);
+}
+
+.scrollableViewButtonContainer {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    justify-content: center;
+
+    padding-top: var(--u20);
     padding-left: var(--u20);
+    padding-right: var(--u20);    
+}
+@media screen and (min-width: 81rem) {
+    .scrollableViewButtonContainer {
+        display: none; 
+    }
 }
 
-.buttonContainer button {
-    position: relative;
-    top: var(--u10);
+.scrollableViewCollapsed {
+    height: 76px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-darkGray-2);
+} 
+@media screen and (min-width: 81rem) {
+    .scrollableViewCollapsed {
+        height: unset;
+        overflow: unset;
+        border-bottom: unset;
+    }
 }
 
-.taskListContainer {
-    min-width: 16rem;
-    flex: 1 1 0;
-}
-
-.taskList {
+.taskList {    
     padding-top: var(--u20);
     padding-bottom: var(--u20);
     padding-left: var(--u20);
     padding-right: var(--u20);
-}
 
-.taskList li {
     list-style: none;
-}
-
-.scrollable {
-    --taskList-gradient: linear-gradient(
-        180deg,
-        var(--color-darkGray-2) 0%,
-        var(--color-transparent) 100%
-    );
-
-    background: var(--taskList-gradient);
-
-    --taskList-borderColor: var(--color-transparent);
-    --taskList-borderRadius: var(--u10);
-
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--taskList-borderColor);
-    border-radius: var(--taskList-borderRadius);
-    border-bottom: none;
-
-    margin-top: var(--u20);
-    height: calc(80vh - 200px);
-    overflow-y: auto;
-}
-
-.taskListContainer::after {
-    --gradient: linear-gradient(
-        180deg,
-        var(--color-transparent) 0%,
-        var(--color-darkGray-1) 50%
-    );
-
-    background: var(--gradient);
-
-    display: block;
-    content: ' ';
-    height: 20px;
-    top: -20px;
-    position: relative;
 }

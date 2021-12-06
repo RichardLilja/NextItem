@@ -1,0 +1,20 @@
+.pageLayout {
+    display: flex;
+    flex-direction: column;
+}
+
+.pageMain {
+    min-height: calc(100vh - var(--app-pageFooterHeight));
+}
+
+@media screen and (min-width: 81rem) {
+    .pageMain {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mainInnerContainer {
+        display: flex;
+        gap: var(--u20);
+    }  
+}

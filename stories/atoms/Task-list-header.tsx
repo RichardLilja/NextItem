@@ -1,20 +1,26 @@
 import React from 'react'
 import styles from './Task-list-header.module.css'
 
+import { Button } from '../atoms/Button'
+
 interface TaskListHeaderProps {
-    headingText: string
-    subHeadingText: string
+    heading: string
+    subheading: string
 }
 
 export const TaskListHeader = ({
-    headingText,
-    subHeadingText,
-    ...props
+    heading,
+    subheading
 }: TaskListHeaderProps) => {
     return (
-        <header className={styles.taskListHeader}>
-            <h2 className={styles.heading}>{headingText}</h2>
-            <p className={styles.subHeading}>{subHeadingText}</p>
-        </header>
+        <div className={styles.container}>
+            <header className={styles.header}>
+                <h2 className={styles.heading}>{heading}</h2>
+                <p className={styles.subheading}>{subheading}</p>
+            </header>
+            <div className={styles.buttonContainer}>
+                <Button label="+ Add task" underlined={true} />
+            </div>
+        </div>
     )
 }

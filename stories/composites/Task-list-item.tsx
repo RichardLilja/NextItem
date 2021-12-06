@@ -1,43 +1,35 @@
 import React from 'react'
 import styles from './Task-list-item.module.css'
 
-import { DraggableProvided } from 'react-beautiful-dnd'
+import { Draggable } from 'react-beautiful-dnd'
 
-import { Card } from '../atoms/Card'
-import { Button } from '../atoms/Button'
+export interface ITask {
+    id: string,
+    text: string
+}
 
 interface TaskListItemProps {
-    text?: string
-    innerRef: DraggableProvided['innerRef']
-    provided: DraggableProvided
+    task: ITask
+    index: number
 }
 
 export const TaskListItem = ({
-    text,
-    innerRef,
-    provided,
-    ...props
+    task,
+    index,
 }: TaskListItemProps) => {
+    const { id, text } = task
+
     return (
-        <li
-            className={styles.taskListItem}
-            ref={innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            {...props}
-        >
-            <Card>
-                <>
-                    <div className={styles.textContainer}>{text}</div>
-                    <div className={styles.buttonContainer}>
-                        <Button
-                            label="Mark as done"
-                            size="small"
-                            type="outlined"
-                        />
-                    </div>
-                </>
-            </Card>
-        </li>
+        <Draggable draggableId={`drg-${id}`} index={index}>
+            {provided => (
+                <li className={styles.item}
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                >
+                    {text}
+                </li>
+            )}
+        </Draggable>
     )
 }

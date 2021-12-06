@@ -53,7 +53,7 @@ const data = {
 }
 
 app.get('/tasks', (req, res) => {
-    res.send(data)
+    res.send(data.tasks)
 })
 
 app.listen(port, () => {

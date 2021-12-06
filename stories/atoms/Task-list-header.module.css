@@ -1,16 +1,27 @@
-.taskListHeader {
-    --taskListHeader-textColor: var(--color-lightGray-1);
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 
-    color: var(--taskListHeader-textColor);
+    padding-top: var(--u20);
+    padding-bottom: var(--u20);
+    padding-left: var(--u20);
+    padding-right: 0;
+}
+.buttonContainer {
+    position: relative;
+    top: var(--u10);
 }
 
+.header {
+    color: var(--color-lightGray-1);
+}
 .heading {
     font-size: var(--u24);
     font-weight: bold;
     line-height: 1;
 }
-
-.subHeading {
+.subheading {
     font-size: var(--u14);
     font-weight: lighter;
     line-height: 1;

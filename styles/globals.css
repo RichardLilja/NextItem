@@ -33,13 +33,27 @@
     --color-lightGray-5: rgba(228, 229, 231, 1);
     --color-lightGray-6: rgba(223, 224, 226, 1);
     --color-lightGray-7: rgba(218, 219, 221, 1);
-    --color-lightGrat-8: rgba(212, 214, 216, 1);
+    --color-lightGray-8: rgba(212, 214, 216, 1);
 
     --bezier-snappyEaseOut: cubic-bezier(0, 0.8, 0.6, 1);
+
+    --app-pageFooterHeight: calc(var(--u) * 80);
+    --app-borderRadius: var(--u10);
+}
+
+@media screen and (min-width: 81rem) {
+    :root {
+        --app-pageFooterHeight: calc(var(--u) * 160);      
+    }
 }
 
 * {
     font-family: var(--font-sansSerif);
     margin: 0;
     padding: 0;
+}
+
+html,
+body {
+    background-color: var(--color-darkGray-1);
 }

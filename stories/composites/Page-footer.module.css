@@ -2,8 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: var(--app-pageFooterHeight);
 }
+
 .pageFooter img {
     height: var(--u24);
     width: auto;
