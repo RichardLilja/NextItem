@@ -33,20 +33,32 @@
     background-color: var(--button-backgroundColor);
     color: var(--button-labelColor);
 
-    transition: all 600ms var(--bezier-snappyEaseOut);
+    transition: background-color 600ms var(--bezier-snappyEaseOut), border-color 600ms var(--bezier-snappyEaseOut);
 }
-.button:hover {
+.button:active {
     --button-borderColor: var(--color-darkGray-4);
     --button-backgroundColor: var(--color-darkGray-4);
+}
+@media screen and (min-width: 81rem) {
+    .button:hover {
+        --button-borderColor: var(--color-darkGray-4);
+        --button-backgroundColor: var(--color-darkGray-4);
+    }
 }
 
 .outlined {
     --button-borderColor: var(--color-darkGray-4);
     --button-backgroundColor: var(--color-transparent);
 }
-.outlined:hover {
+.outlined:active {
     --button-borderColor: var(--color-darkGray-4);
-    --button-backgroundColor: var(--color-darkGray-4);
+    --button-backgroundColor: var(--color-darkGray-4);    
+}
+@media screen and (min-width: 81rem) {
+    .outlined:hover {
+        --button-borderColor: var(--color-darkGray-4);
+        --button-backgroundColor: var(--color-darkGray-4);
+    }
 }
 
 .underlined {

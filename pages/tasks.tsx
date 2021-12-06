@@ -28,7 +28,7 @@ const TasksPage: NextPage = () => {
     }, [])
 
     useQuery('tasks', async () => {
-        const { data } = await axios.get('http://localhost:3033/tasks')
+        const { data } = await axios.get('http://192.168.0.2:3033/tasks')
         setTasks(data)
     })
 

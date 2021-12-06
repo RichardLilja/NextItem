@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import styles from './Task-list-item.module.css'
 
 import { Draggable } from 'react-beautiful-dnd'
@@ -18,6 +18,36 @@ interface TaskListItemProps {
 export const TaskListItem = ({ task, index }: TaskListItemProps) => {
     const { id, text } = task
 
+    const [ width, setWidth ] = useState(window.innerWidth)
+
+    const updateWidth = () => {
+        setWidth(window.innerWidth);
+    }
+
+    useLayoutEffect(() => {        
+        window.addEventListener('resize', updateWidth);
+        updateWidth();
+        return () => window.removeEventListener('resize', updateWidth);
+    }, []);
+
+    const renderButton = () => {
+        const rem = 16;
+
+        let size: 'small' | 'medium' = 'medium'
+
+        if (width > 81 * rem) {
+            size = 'small'
+        }
+
+        return (
+            <Button
+            label="Mark as done"
+            size={size}
+            outlined={true}
+            />
+        )
+    }
+
     return (
         <Draggable draggableId={`drg-${id}`} index={index}>
             {provided => (
@@ -29,11 +59,7 @@ export const TaskListItem = ({ task, index }: TaskListItemProps) => {
                 >
                     <div className={styles.textContainer}>{text}</div>
                     <div className={styles.buttonContainer}>
-                        <Button
-                            label="Mark as done"
-                            size="small"
-                            outlined={true}
-                        />
+                        {renderButton()}
                     </div>
                 </li>
             )}

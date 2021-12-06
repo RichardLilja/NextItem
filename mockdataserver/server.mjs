@@ -53,6 +53,7 @@ const data = {
 }
 
 app.get('/tasks', (req, res) => {
+    console.log('/tasks')
     res.send(data.tasks)
 })
 
