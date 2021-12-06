@@ -16,7 +16,10 @@ const Template: ComponentStory<typeof TaskListItem> = () => {
             <Droppable droppableId="droppableListID">
                 {provided => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
-                        <TaskListItem task={{ id: '0', text: 'lol'}} index={0}/>
+                        <TaskListItem
+                            task={{ id: '0', text: 'lol' }}
+                            index={0}
+                        />
                         {provided.placeholder}
                     </div>
                 )}

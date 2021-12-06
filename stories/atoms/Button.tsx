@@ -16,7 +16,7 @@ export const Button = ({
     fullWidth = false,
     size = 'medium',
     label,
-    ...props 
+    ...props
 }: ButtonProps) => {
     const buttonStyles = [styles.button]
 

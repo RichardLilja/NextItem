@@ -10,7 +10,7 @@ interface TaskListHeaderProps {
 
 export const TaskListHeader = ({
     heading,
-    subheading
+    subheading,
 }: TaskListHeaderProps) => {
     return (
         <div className={styles.container}>

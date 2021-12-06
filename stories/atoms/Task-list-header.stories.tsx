@@ -9,11 +9,6 @@ export default {
 } as ComponentMeta<typeof TaskListHeader>
 
 const Template: ComponentStory<typeof TaskListHeader> = () => {
-    return (
-        <TaskListHeader
-            heading="Small"
-            subheading="Less than a day"
-        />
-    )
+    return <TaskListHeader heading="Small" subheading="Less than a day" />
 }
 export const taskListHeader = Template.bind({})

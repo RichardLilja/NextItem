@@ -43,7 +43,7 @@
 
 @media screen and (min-width: 81rem) {
     :root {
-        --app-pageFooterHeight: calc(var(--u) * 160);      
+        --app-pageFooterHeight: calc(var(--u) * 160);
     }
 }
 

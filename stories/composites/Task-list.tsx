@@ -38,14 +38,25 @@ export const TaskList = ({
 
         return (
             <div className={styles.scrollableViewButtonContainer}>
-                <Button label={label} outlined={true} fullWidth={true} onClick={toggleExpand}/>
+                <Button
+                    label={label}
+                    outlined={true}
+                    fullWidth={true}
+                    onClick={toggleExpand}
+                />
             </div>
         )
     }
 
     const renderListItems = () => {
         return tasks.map((task, index) => {
-            return <TaskListItem task={task} index={index} key={`task-${task.id}`}/>
+            return (
+                <TaskListItem
+                    task={task}
+                    index={index}
+                    key={`task-${task.id}`}
+                />
+            )
         })
     }
 
@@ -53,7 +64,8 @@ export const TaskList = ({
         return (
             <Droppable droppableId={droppableId}>
                 {provided => (
-                    <ul className={styles.taskList} 
+                    <ul
+                        className={styles.taskList}
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
@@ -67,7 +79,7 @@ export const TaskList = ({
 
     return (
         <section className={styles.taskListSection}>
-            <TaskListHeader heading={heading} subheading={subheading}/>
+            <TaskListHeader heading={heading} subheading={subheading} />
 
             <div className={scrollableViewStyles.join(' ')}>
                 {renderExpandButton()}

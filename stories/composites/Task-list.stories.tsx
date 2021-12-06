@@ -13,9 +13,9 @@ export default {
 const Template: ComponentStory<typeof TaskList> = args => {
     return (
         <DragDropContext onDragEnd={() => {}}>
-            <TaskList 
-                tasks={[]} 
-                heading="Small" 
+            <TaskList
+                tasks={[]}
+                heading="Small"
                 subheading="Less than a day"
                 droppableId="drp-small"
             />

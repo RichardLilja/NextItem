@@ -16,5 +16,5 @@
     .mainInnerContainer {
         display: flex;
         gap: var(--u20);
-    }  
+    }
 }

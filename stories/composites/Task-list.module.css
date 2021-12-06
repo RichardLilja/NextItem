@@ -7,6 +7,20 @@
 
     background: var(--taskList-gradient);
 }
+@media screen and (min-width: 81rem) {
+    .scrollableView {
+        flex: 0 1 1;
+        width: 18rem;
+
+        height: 50vh;
+        overflow-y: auto;
+
+        border-width: 0;
+        border-style: solid;
+        border-color: var(--color-transparent);
+        border-radius: var(--app-borderRadius);
+    }
+}
 
 .scrollableViewButtonContainer {
     display: flex;
@@ -14,11 +28,11 @@
 
     padding-top: var(--u20);
     padding-left: var(--u20);
-    padding-right: var(--u20);    
+    padding-right: var(--u20);
 }
 @media screen and (min-width: 81rem) {
     .scrollableViewButtonContainer {
-        display: none; 
+        display: none;
     }
 }
 
@@ -26,7 +40,7 @@
     height: 76px;
     overflow: hidden;
     border-bottom: 1px solid var(--color-darkGray-2);
-} 
+}
 @media screen and (min-width: 81rem) {
     .scrollableViewCollapsed {
         height: unset;
@@ -35,11 +49,33 @@
     }
 }
 
-.taskList {    
+.taskList {
     padding-top: var(--u20);
     padding-bottom: var(--u20);
     padding-left: var(--u20);
     padding-right: var(--u20);
 
     list-style: none;
+}
+
+@media screen and (min-width: 81rem) {
+    .taskListSection::after {
+        --taskList-sectionGradient: linear-gradient(
+            180deg,
+            var(--color-transparent) 0%,
+            var(--color-darkGray-1) 100%
+        );
+        background: var(--taskList-sectionGradient);
+
+        display: block;
+
+        position: relative;
+        left: 0;
+        right: 0;
+        bottom: 2rem;
+        height: 2rem;
+        z-index: 100;
+
+        content: ' ';
+    }
 }

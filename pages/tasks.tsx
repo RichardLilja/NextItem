@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-import { useQuery } from 'react-query';
+import { useQuery } from 'react-query'
 import axios from 'axios'
 
 import styles from '../styles/TasksPage.module.css'
@@ -16,11 +16,10 @@ import TaskList from '../stories/composites/Task-list'
 import { ITask } from '../stories/composites/Task-list-item'
 
 export interface ITasks {
-    [key : string]: Array<ITask>
+    [key: string]: Array<ITask>
 }
 
 const TasksPage: NextPage = () => {
-
     const [ready, setReady] = useState<boolean>(false)
     const [tasks, setTasks] = useState<ITasks | null>(null)
 
@@ -54,7 +53,6 @@ const TasksPage: NextPage = () => {
         if (sameList && destinationIndex !== undefined) {
             sourceItems.splice(destinationIndex, 0, item)
             taskObject[sourceId] = sourceItems
-
         } else if (destinationId && destinationIndex !== undefined) {
             const destinationItems = Array.from(tasks[destinationId])
             destinationItems.splice(destinationIndex, 0, item)
@@ -70,27 +68,27 @@ const TasksPage: NextPage = () => {
 
         return (
             <>
-                <TaskList 
-                    tasks={tasks.small} 
-                    heading="Small" 
+                <TaskList
+                    tasks={tasks.small}
+                    heading="Small"
                     subheading="Less than a day"
                     droppableId="small"
                 />
-                <TaskList 
-                    tasks={tasks.medium} 
-                    heading="Medium" 
+                <TaskList
+                    tasks={tasks.medium}
+                    heading="Medium"
                     subheading="1 - 2 days"
                     droppableId="medium"
                 />
-                <TaskList 
-                    tasks={tasks.large} 
-                    heading="Large" 
+                <TaskList
+                    tasks={tasks.large}
+                    heading="Large"
                     subheading="3 - 5 days"
                     droppableId="large"
                 />
-                <TaskList 
-                    tasks={tasks.extraLarge} 
-                    heading="Extra large" 
+                <TaskList
+                    tasks={tasks.extraLarge}
+                    heading="Extra large"
                     subheading="More than 5 days"
                     droppableId="extraLarge"
                 />

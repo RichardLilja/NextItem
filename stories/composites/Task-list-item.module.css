@@ -7,18 +7,27 @@
     border-color: var(--color-darkGray-4);
     border-radius: var(--app-borderRadius);
 
-    padding-top: var(--u20);
-    padding-bottom: var(--u20);
-    padding-left: var(--u20);
-    padding-right: var(--u20);
-
     margin-bottom: var(--u10);
 
     list-style: none;
 }
-@media screen and (min-width: 81rem) {
-    .item {
-        flex: 0 1 1;
-        width: 16rem;
-    }
+.textContainer {
+    font-weight: lighter;
+    font-size: var(--u14);
+    line-height: 1.6;
+
+    padding-top: var(--u15);
+    padding-bottom: var(--u20);
+    padding-left: var(--u20);
+    padding-right: var(--u20);
+}
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 2rem;
+
+    padding-top: var(--u20);
+    padding-bottom: var(--u20);
+    padding-left: var(--u20);
+    padding-right: var(--u20);
 }
