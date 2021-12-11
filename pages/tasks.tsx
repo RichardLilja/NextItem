@@ -32,6 +32,15 @@ const TasksPage: NextPage = () => {
         setTasks(data)
     })
 
+    const putTasks = async (newTasks: ITasks) => {
+        setTasks(newTasks)
+        const { data } = await axios.put(
+            'http://192.168.0.2:3033/tasks',
+            newTasks
+        )
+        setTasks(data)
+    }
+
     const onDragEndHandler = (result: DropResult) => {
         if (result.destination === null || tasks === null) return
 
@@ -60,7 +69,14 @@ const TasksPage: NextPage = () => {
             taskObject[destinationId] = destinationItems
         }
 
-        setTasks(taskObject)
+        putTasks(taskObject)
+    }
+
+    const doneClickHandler = async (id: string) => {
+        const { data } = await axios.delete(
+            `http://192.168.0.2:3033/tasks/${id}`
+        )
+        setTasks(data)
     }
 
     const renderLists = () => {
@@ -73,24 +89,28 @@ const TasksPage: NextPage = () => {
                     heading="Small"
                     subheading="Less than a day"
                     droppableId="small"
+                    doneClickHandler={doneClickHandler}
                 />
                 <TaskList
                     tasks={tasks.medium}
                     heading="Medium"
                     subheading="1 - 2 days"
                     droppableId="medium"
+                    doneClickHandler={doneClickHandler}
                 />
                 <TaskList
                     tasks={tasks.large}
                     heading="Large"
                     subheading="3 - 5 days"
                     droppableId="large"
+                    doneClickHandler={doneClickHandler}
                 />
                 <TaskList
                     tasks={tasks.extraLarge}
                     heading="Extra large"
                     subheading="More than 5 days"
                     droppableId="extraLarge"
+                    doneClickHandler={doneClickHandler}
                 />
             </>
         )

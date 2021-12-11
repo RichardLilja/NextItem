@@ -8,7 +8,12 @@ export default {
     component: TaskListHeader,
 } as ComponentMeta<typeof TaskListHeader>
 
-const Template: ComponentStory<typeof TaskListHeader> = () => {
-    return <TaskListHeader heading="Small" subheading="Less than a day" />
-}
+const Template: ComponentStory<typeof TaskListHeader> = args => (
+    <TaskListHeader {...args} />
+)
+
 export const taskListHeader = Template.bind({})
+taskListHeader.args = {
+    heading: 'Heading',
+    subheading: 'Subheading',
+}

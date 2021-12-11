@@ -1,6 +1,9 @@
 import React, { useLayoutEffect, useState } from 'react'
 import styles from './Task-list-item.module.css'
 
+import { useQuery } from 'react-query'
+import axios from 'axios'
+
 import { Draggable } from 'react-beautiful-dnd'
 
 import { Button } from '../atoms/Button'
@@ -13,25 +16,30 @@ export interface ITask {
 interface TaskListItemProps {
     task: ITask
     index: number
+    doneClickHandler: (id: string) => void
 }
 
-export const TaskListItem = ({ task, index }: TaskListItemProps) => {
+export const TaskListItem = ({
+    task,
+    index,
+    doneClickHandler,
+}: TaskListItemProps) => {
     const { id, text } = task
 
-    const [ width, setWidth ] = useState(window.innerWidth)
+    const [width, setWidth] = useState(window.innerWidth)
 
     const updateWidth = () => {
-        setWidth(window.innerWidth);
+        setWidth(window.innerWidth)
     }
 
-    useLayoutEffect(() => {        
-        window.addEventListener('resize', updateWidth);
-        updateWidth();
-        return () => window.removeEventListener('resize', updateWidth);
-    }, []);
+    useLayoutEffect(() => {
+        window.addEventListener('resize', updateWidth)
+        updateWidth()
+        return () => window.removeEventListener('resize', updateWidth)
+    }, [])
 
     const renderButton = () => {
-        const rem = 16;
+        const rem = 16
 
         let size: 'small' | 'medium' = 'medium'
 
@@ -41,9 +49,12 @@ export const TaskListItem = ({ task, index }: TaskListItemProps) => {
 
         return (
             <Button
-            label="Mark as done"
-            size={size}
-            outlined={true}
+                label="Mark as done"
+                size={size}
+                outlined={true}
+                onClick={() => {
+                    doneClickHandler(id)
+                }}
             />
         )
     }

@@ -14,6 +14,7 @@ interface TaskListProps {
     heading: string
     subheading: string
     droppableId: string
+    doneClickHandler: (id: string) => void
 }
 
 export const TaskList = ({
@@ -21,6 +22,7 @@ export const TaskList = ({
     heading,
     subheading,
     droppableId,
+    doneClickHandler,
 }: TaskListProps) => {
     const [expanded, setExpanded] = useState(true)
 
@@ -55,6 +57,7 @@ export const TaskList = ({
                     task={task}
                     index={index}
                     key={`task-${task.id}`}
+                    doneClickHandler={doneClickHandler}
                 />
             )
         })

@@ -12,9 +12,9 @@ const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
 export const button = Template.bind({})
 button.args = {
-    type: 'solid',
-    width: 'auto',
-    size: 'medium',
-    label: 'button',
+    outlined: false,
     underlined: false,
+    fullWidth: false,
+    size: 'medium',
+    label: 'Push me',
 }
