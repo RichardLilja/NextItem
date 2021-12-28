@@ -19,6 +19,10 @@ const Template: ComponentStory<typeof TaskListItem> = () => {
                         <TaskListItem
                             task={{ id: '0', text: 'lol' }}
                             index={0}
+                            doneClickHandler={() => {}}
+                            createTaskClickHandler={() => {}}
+                            cancelTaskClickHandler={() => {}}
+                            taskListId=''
                         />
                         {provided.placeholder}
                     </div>

@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 
+import { v4 as uuidv4 } from 'uuid'
+
 import styles from '../styles/TasksPage.module.css'
 
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
@@ -28,14 +30,14 @@ const TasksPage: NextPage = () => {
     }, [])
 
     useQuery('tasks', async () => {
-        const { data } = await axios.get('http://192.168.0.2:3033/tasks')
+        const { data } = await axios.get('http://localhost:3033/tasks')
         setTasks(data)
     })
 
     const putTasks = async (newTasks: ITasks) => {
         setTasks(newTasks)
         const { data } = await axios.put(
-            'http://192.168.0.2:3033/tasks',
+            'http://localhost:3033/tasks',
             newTasks
         )
         setTasks(data)
@@ -74,9 +76,52 @@ const TasksPage: NextPage = () => {
 
     const doneClickHandler = async (id: string) => {
         const { data } = await axios.delete(
-            `http://192.168.0.2:3033/tasks/${id}`
+            `http://localhost:3033/tasks/${id}`
         )
         setTasks(data)
+    }
+
+    const addClickHandler = async (listId: string) => {
+        if (tasks === null) { return }
+
+        const newTask: ITask = {
+            id: uuidv4(),
+            text: '',
+            editable: true,
+        }
+
+        const taskObject = Object.assign({}, tasks)
+        taskObject[listId].unshift(newTask)
+        
+        setTasks(taskObject)
+    }
+
+    const cancelTaskClickHandler = async (listId: string, taskId: string) => {
+        if (tasks === null) { return }
+
+        const taskObject = Object.assign({}, tasks)
+        const foundTask = taskObject[listId].find(task => task.id === taskId)
+
+        if (foundTask) {
+            const foundIndex = taskObject[listId].indexOf(foundTask)
+            
+            taskObject[listId].splice(foundIndex, 1)
+        }
+
+        setTasks(taskObject)
+    }
+
+    const createTaskClickHandler = async (listId: string, taskId: string) => {
+        if (tasks === null) { return }
+        
+        const taskObject = Object.assign({}, tasks)
+        const foundTask = taskObject[listId].find(task => task.id === taskId)
+
+        if (foundTask) {
+            foundTask.editable = false
+        }
+
+        putTasks(taskObject)
     }
 
     const renderLists = () => {
@@ -90,6 +135,9 @@ const TasksPage: NextPage = () => {
                     subheading="Less than a day"
                     droppableId="small"
                     doneClickHandler={doneClickHandler}
+                    createTaskClickHandler={createTaskClickHandler}
+                    cancelTaskClickHandler={cancelTaskClickHandler}
+                    addClickHandler={() => {addClickHandler('small')}}
                 />
                 <TaskList
                     tasks={tasks.medium}
@@ -97,6 +145,9 @@ const TasksPage: NextPage = () => {
                     subheading="1 - 2 days"
                     droppableId="medium"
                     doneClickHandler={doneClickHandler}
+                    createTaskClickHandler={createTaskClickHandler}
+                    cancelTaskClickHandler={cancelTaskClickHandler}
+                    addClickHandler={() => {addClickHandler('medium')}}
                 />
                 <TaskList
                     tasks={tasks.large}
@@ -104,6 +155,9 @@ const TasksPage: NextPage = () => {
                     subheading="3 - 5 days"
                     droppableId="large"
                     doneClickHandler={doneClickHandler}
+                    createTaskClickHandler={createTaskClickHandler}
+                    cancelTaskClickHandler={cancelTaskClickHandler}
+                    addClickHandler={() => {addClickHandler('large')}}
                 />
                 <TaskList
                     tasks={tasks.extraLarge}
@@ -111,6 +165,9 @@ const TasksPage: NextPage = () => {
                     subheading="More than 5 days"
                     droppableId="extraLarge"
                     doneClickHandler={doneClickHandler}
+                    createTaskClickHandler={createTaskClickHandler}
+                    cancelTaskClickHandler={cancelTaskClickHandler}
+                    addClickHandler={() => {addClickHandler('extraLarge')}}
                 />
             </>
         )

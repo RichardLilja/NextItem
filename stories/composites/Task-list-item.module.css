@@ -25,9 +25,44 @@
     display: flex;
     justify-content: flex-end;
     padding-top: 2rem;
+    
+    gap: var(--u5);
 
     padding-top: var(--u20);
     padding-bottom: var(--u20);
     padding-left: var(--u20);
     padding-right: var(--u20);
+}
+.textInputContainer {
+    display: grid;
+}
+.textInput,
+.textInputGrow {
+    grid-area: 1 / 1 / 2 / 2;
+
+    font-weight: lighter;
+    font-size: var(--u14);
+    line-height: 1.6;    
+
+    background-color: var(--color-darkGray-1);
+    color: var(--color-lightGray-1);
+
+    border: 1px solid var(--color-darkGray-1);
+    border-top-left-radius: var(--app-borderRadius);
+    border-top-right-radius: var(--app-borderRadius);
+
+    padding-top: var(--u15);
+    padding-bottom: var(--u20);
+    padding-left: var(--u20);
+    padding-right: var(--u20);
+
+    height: 100%;
+    width: 100%;
+
+    resize: none;
+    overflow-y: hidden;
+}
+.textInputGrow {
+    white-space: pre-wrap;
+    visibility: hidden;
 }

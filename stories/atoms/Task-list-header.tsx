@@ -6,11 +6,13 @@ import { Button } from '../atoms/Button'
 interface TaskListHeaderProps {
     heading: string
     subheading: string
+    addClickHandler: () => void
 }
 
 export const TaskListHeader = ({
     heading,
     subheading,
+    addClickHandler,
 }: TaskListHeaderProps) => {
     return (
         <div className={styles.container}>
@@ -19,7 +21,7 @@ export const TaskListHeader = ({
                 <p className={styles.subheading}>{subheading}</p>
             </header>
             <div className={styles.buttonContainer}>
-                <Button label="+ Add task" underlined={true} />
+                <Button label="+ Add task" underlined={true} onClick={addClickHandler} />
             </div>
         </div>
     )

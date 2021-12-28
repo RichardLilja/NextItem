@@ -15,6 +15,9 @@ interface TaskListProps {
     subheading: string
     droppableId: string
     doneClickHandler: (id: string) => void
+    createTaskClickHandler: (listId: string, taskId: string) => void
+    cancelTaskClickHandler: (listId: string, taskId: string) => void
+    addClickHandler: () => void
 }
 
 export const TaskList = ({
@@ -23,6 +26,9 @@ export const TaskList = ({
     subheading,
     droppableId,
     doneClickHandler,
+    createTaskClickHandler,
+    cancelTaskClickHandler,
+    addClickHandler,
 }: TaskListProps) => {
     const [expanded, setExpanded] = useState(true)
 
@@ -58,6 +64,9 @@ export const TaskList = ({
                     index={index}
                     key={`task-${task.id}`}
                     doneClickHandler={doneClickHandler}
+                    createTaskClickHandler={createTaskClickHandler}
+                    cancelTaskClickHandler={cancelTaskClickHandler}
+                    taskListId={droppableId}
                 />
             )
         })
@@ -82,7 +91,7 @@ export const TaskList = ({
 
     return (
         <section className={styles.taskListSection}>
-            <TaskListHeader heading={heading} subheading={subheading} />
+            <TaskListHeader heading={heading} subheading={subheading} addClickHandler={addClickHandler}/>
 
             <div className={scrollableViewStyles.join(' ')}>
                 {renderExpandButton()}
